@@ -1,0 +1,80 @@
+Enter your responses inline below and push this file to your private GitHub
+repository.
+
+
+1. Assume I plan to use the friend_overlap function above to quantify the
+similarity of two users. E.g., because 344 is larger than 1, I conclude that
+Jill Stein and Gary Johnson are more similar than Hillary Clinton and Donald
+Trump.
+
+How is this approach misleading? How might you fix it?
+
+>>>This approach is misleading because although friend_overlap function gives us the common friends between 2 users, it doesnt quantify in 
+what context the users are similar. May if had known that all the overlaps are on twitter handles for news organisations, their reporters, immediate support staff and political party members.
+We could say that Jill Stein and Gary Johnson are similar to each other in terms of having similar users.
+
+It also happens that political leaders/party members change their political parties which might also be a reason to have overlaps between any of the 2 presendential candidates.
+To fix this we need a co-relation between the presential candidates and their follow list user accounts using a quantity something like 'relativeness' which can probably 
+hold values like 'Colleague', 'Friend', 'News Agency', etc.
+The co-relation can also be defined using other techniques, the above example is merely what I could think of.
+
+2. Looking at the output of your followed_by_hillary_and_donald function, why
+do you think this user is followed by both Hilary Clinton and Donald Trump,
+who are rivals? Do some web searches to see if you can find out more
+information.
+
+>>>The White House twitter handle is the official twitter handle for the President of The United States (POTUS) and his administration.
+Both Hillary Clinton and Donald Trump are following this handle as they have the connection of being a part of the Presidental administration.
+For Donald Trump being the current President of the United States, official tweets are send from him or his administration are either tweeted/re-tweeted 
+by the White house twitter handle. For Hillary Clinton she was First Lady of United States from Jan 1993 to Jan 2001 and the United States Secretary of state 
+which makes her a part of Presidental administration (twice). Hence I would come to a conclusion to why Whitehouse twitter is being followed by both of them.
+
+references : 
+https://en.wikipedia.org/wiki/Hillary_Clinton
+https://en.wikipedia.org/wiki/Donald_Trump
+https://en.wikipedia.org/wiki/Barack_Obama_on_social_media
+https://twitter.com/WhiteHouse/following
+
+
+3. There is a big difference in how many accounts each candidate follows (Gary
+Johnson follows over 3K accounts, while Donald Trump follows less than
+50). Why do you think this is? How might that affect our analysis?
+
+>>>Online social platforms like Twitter began to show their true power in Obama's presidential campaign in 2008 (refer account usage 
+history on the wiki page mentioned below). So in the recent elections the strategy has been similar for some of the presidential candidates.
+In our case, on having a cursory glance at the followers for Gary Johnson, I can deduce is that the twitter handle for Gary Johnson has followed 
+news channels, reporters,student organisation,etc to gain a direct connect to the voter base. It also might be a way of reaching the masses.
+
+In case of Donald Trump, although his follows list has less than 50 user accounts, most of which are either family, personal managers or his company handles.
+Which would give us the presumption that Trump didnt had a direct connect to his masses, but due to his effective use of 
+
+
+references:
+https://en.wikipedia.org/wiki/Barack_Obama_on_social_media
+https://hbr.org/2017/03/what-trump-understands-about-using-social-media-to-drive-attention
+
+
+
+4. The follower graph we've collected is incomplete. To expand it, we would
+have to also collect the list of accounts followed by each of the
+friends. That is, for each user X that Donald Trump follows, we would have to
+also collect all the users that X follows. Assuming we again use the API call
+https://dev.twitter.com/rest/reference/get/friends/ids, how many requests will
+we have to make? Given how Twitter does rate limiting
+(https://dev.twitter.com/rest/public/rate-limiting), approximately how many
+minutes will it take to collect this data?
+
+>>>From the output of Friends per candidate function we have the below :
+DrJillStein 1648
+GovGaryJohnson 3481
+HillaryClinton 762
+realDonaldTrump 45
+
+This totals upto 5936 user accounts, now since we are using the API call again
+we have a rate limit of 15 requests per request windows which lasts for 15 mins.
+Assuming the best scenario, in which we only request for 15 requests in an iteration
+we would need 5936/15 which gives us approximately 396 requests windows with 15 requests
+each.
+
+So we would need to make 5936 requests, with the above mentioned best case scenario, we will need 
+396 request windows which woould take 396*15minutes = 5940 minutes to get that required data.
